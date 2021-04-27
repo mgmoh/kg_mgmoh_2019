@@ -1,4 +1,7 @@
 
+// Mohamed G. Mohamed
+// 4/27/2021
+
 // Dictionary of values.
 var dict = [{key: 0, value: 'Zero'},
             {key: 1, value: 'One'},
@@ -21,15 +24,16 @@ let array = args.map(function(item, index, array){
 });
 
 // Mapping function that goes through the 2 Dimensional array and outputs the values.
-array.map(function(subarray){
+array.map(function(subarray, masterIndex, masterArray){
   return subarray.map(function(item, index, array){
-    if(index == array.length - 1) {
+    if(index == array.length - 1 && masterArray[masterIndex + 1] != null) {
       process.stdout.write(item + ',');
     } else {
       process.stdout.write(item);
     }
   });
 });
+process.stdout.write('\n');
 
 // Function that takes in Integer and returns each digit in an array.
 // UPDATE: Function now returns the phonetic equivalent of the Integer ex: 97 --> ['Nine', 'Seven'].
