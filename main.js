@@ -17,32 +17,24 @@ var dict = [{key: 0, value: 'Zero'},
 // Store arguments into variable
 var args = process.argv.slice(2);
 
-
-// Mapping function to loop through each integer input.
+// Mapping function to loop through each integer input and output the values.
 let array = args.map(function(item, index, array){
-  return convertToDigits(Number(item));
-});
-
-// Mapping function that goes through the 2 Dimensional array and outputs the values.
-array.map(function(subarray, masterIndex, masterArray){
-  return subarray.map(function(item, index, array){
-    if(index == array.length - 1 && masterArray[masterIndex + 1] != null) {
-      process.stdout.write(item + ',');
-    } else {
-      process.stdout.write(item);
-    }
-  });
+  if(index != array.length - 1){
+    process.stdout.write(convertToDigits(Number(item)) + ',');
+  } else {
+    process.stdout.write(convertToDigits(Number(item)));
+  }
 });
 process.stdout.write('\n');
 
 // Function that takes in Integer and returns each digit in an array.
 // UPDATE: Function now returns the phonetic equivalent of the Integer ex: 97 --> ['Nine', 'Seven'].
 function convertToDigits(num) {
-  var array = [];
+  var string = '';
   while(num >= 10){
-    array.unshift(dict[num % 10].value);
+    string = dict[num % 10].value + string;
     num = Math.floor(num / 10);
   }
-  array.unshift(dict[num].value);
-  return array;
+  string = dict[num].value + string;
+  return string;
 }
