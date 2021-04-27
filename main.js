@@ -20,8 +20,16 @@ let array = args.map(function(item, index, array){
   return convertToDigits(Number(item));
 });
 
-// Test Output
-console.log(array);
+// Mapping function that goes through the 2 Dimensional array and outputs the values.
+array.map(function(subarray){
+  return subarray.map(function(item, index, array){
+    if(index == array.length - 1) {
+      process.stdout.write(item + ',');
+    } else {
+      process.stdout.write(item);
+    }
+  });
+});
 
 // Function that takes in Integer and returns each digit in an array.
 // UPDATE: Function now returns the phonetic equivalent of the Integer ex: 97 --> ['Nine', 'Seven'].
