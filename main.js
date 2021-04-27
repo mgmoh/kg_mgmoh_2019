@@ -17,8 +17,8 @@ var dict = [{key: 0, value: 'Zero'},
 // Store arguments into variable
 var args = process.argv.slice(2);
 
-// Mapping function to loop through each integer input and output the values.
-let array = args.map(function(item, index, array){
+// Mapping function to loop through each integer input in the args array and outputs the values.
+args.map(function(item, index, array){
   if(index != array.length - 1){
     process.stdout.write(convertToDigits(Number(item)) + ',');
   } else {
@@ -27,8 +27,7 @@ let array = args.map(function(item, index, array){
 });
 process.stdout.write('\n');
 
-// Function that takes in Integer and returns each digit in an array.
-// UPDATE: Function now returns the phonetic equivalent of the Integer ex: 97 --> ['Nine', 'Seven'].
+// Function that takes in  an Integer and returns each digit into a combined string.
 function convertToDigits(num) {
   var string = '';
   while(num >= 10){
